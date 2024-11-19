@@ -1,0 +1,16 @@
+[
+  {
+    "id": 2,
+    "title": "Comida para gato",
+    "description": "la mas nutritiva para perros",
+    "code": "asdasd",
+    "price": 19.99,
+    "stock": 50,
+    "category": "comida",
+    "thumbnails": [
+      "https://example.com/images/mascotas.jpg",
+      "https://example.com/images/mascotas.jpg"
+    ],
+    "status": true
+  }
+]
