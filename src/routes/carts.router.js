@@ -1,5 +1,5 @@
 import { Router } from "express";
-import CartManager from "../services/CartManager";
+import CartManager from "../services/CartManager.js";
 
 // Requisitos de esta api:
 // 1) La ruta raíz POST / deberá crear un nuevo carrito con la siguiente estructura:
@@ -21,8 +21,9 @@ const cartManager = new CartManager();
 
 // Crear carrito
 router.post("/", async(req, res) =>{
+    console.log("paso")
     try {
-        const newCart = await productsManager.addProduct({title, description, code, price, stock, category, thumbnails});
+        const newCart = await cartManager.addCart();
         res.status(201).json(newCart);
     } catch (error) {
         console.error(error);
@@ -33,7 +34,7 @@ router.post("/", async(req, res) =>{
 router.get("/:pid", async(req, res) =>{
     try {
         const id = parseInt(req.params.pid);
-        const cart = await productsManager.getCart(id);
+        const cart = await cartManager.getCart(id);
 
         if(!cart) return res.status(400).send("Carrito no encontrado");
         
@@ -44,7 +45,17 @@ router.get("/:pid", async(req, res) =>{
 })
 
 // Agregar producto a carrito
-
+router.post("/:cid/product/:pid", async(req, res) =>{
+    try {
+        const cartId = parseInt(req.params.cid);
+        const productId = parseInt(req.params.pid);
+        const response = await cartManager.addProductToCart(cartId, productId);
+        const msg = `Status: ${response.status}. Mensaje: ${response.msg}`
+        return (response.status === "error") ? res.status(400).send(msg) : res.send(msg); 
+    } catch (error) {
+        console.error(error);
+    }
+})
 
 
 export default router;
