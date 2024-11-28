@@ -24,7 +24,7 @@ export default class CartManager{
         await fs.writeFile(cartsFilePath, jsonData)
     }
 
-    async addCart(){
+    addCart(){
         const newCart = {
             id: this.carts.length ? this.carts[this.carts.length - 1].id + 1 : 1,
             products: []
@@ -39,7 +39,7 @@ export default class CartManager{
         return newCart;
     }
 
-    async getCart(id){
+    getCart(id){
         return this.carts.find(cart => cart.id === id)
     }
 

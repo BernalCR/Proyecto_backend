@@ -22,10 +22,10 @@ const router = Router();
 const productsManager = new ProductsManager();
 
 // listar
-router.get("/", async(req, res) =>{
+router.get("/", (req, res) =>{
     try {
         const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
-        const products = await productsManager.getAllProducts(limit);
+        const products = productsManager.getAllProducts(limit);
         res.json(products);
     } catch (error) {
         console.error(error);
@@ -33,10 +33,10 @@ router.get("/", async(req, res) =>{
 })
 
 // Obtener 1
-router.get("/:pid", async(req, res) =>{
+router.get("/:pid", (req, res) =>{
     try {
         const id = parseInt(req.params.pid);
-        const product = await productsManager.getProductById(id);
+        const product = productsManager.getProductById(id);
 
         if(!product) return res.status(400).send("Producto no encontrado");
         
@@ -47,12 +47,12 @@ router.get("/:pid", async(req, res) =>{
 })
 
 // Crear
-router.post("/", async(req, res) =>{
+router.post("/", (req, res) =>{
     try {
         const {title, description, code, price, stock, category, thumbnails} = req.body;
         if(!title || !description || !code || !price || !stock || !category) return res.status(400).send("Todos los campos son obligatorios menos el thumbnails");
 
-        const newProduct = await productsManager.addProduct({title, description, code, price, stock, category, thumbnails});
+        const newProduct = productsManager.addProduct({title, description, code, price, stock, category, thumbnails});
 
         res.status(201).json(newProduct);
     } catch (error) {
@@ -61,11 +61,11 @@ router.post("/", async(req, res) =>{
 })
 
 // Editar
-router.put("/:pid", async (req, res) =>{
+router.put("/:pid", (req, res) =>{
     try {
         const productId = parseInt(req.params.pid);
 
-        const updatedProduct = await productsManager.updateProduct(productId, req.body);
+        const updatedProduct = productsManager.updateProduct(productId, req.body);
         if (updatedProduct) {
             res.json(updatedProduct);
         } else {
@@ -77,10 +77,10 @@ router.put("/:pid", async (req, res) =>{
 })
 
 //Eliminar
-router.delete('/:pid', async (req, res) => {
+router.delete('/:pid', (req, res) => {
     try {
         const productId = parseInt(req.params.pid);
-        const deletedProduct = await productsManager.deleteProduct(productId);
+        const deletedProduct = productsManager.deleteProduct(productId);
         if (deletedProduct) {
             res.json(deletedProduct);
         } else {

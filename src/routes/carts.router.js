@@ -20,10 +20,10 @@ const router = Router();
 const cartManager = new CartManager();
 
 // Crear carrito
-router.post("/", async(req, res) =>{
+router.post("/", (req, res) =>{
     console.log("paso")
     try {
-        const newCart = await cartManager.addCart();
+        const newCart = cartManager.addCart();
         res.status(201).json(newCart);
     } catch (error) {
         console.error(error);
@@ -31,10 +31,10 @@ router.post("/", async(req, res) =>{
 })
 
 // Obtener productos de carrito
-router.get("/:pid", async(req, res) =>{
+router.get("/:pid", (req, res) =>{
     try {
         const id = parseInt(req.params.pid);
-        const cart = await cartManager.getCart(id);
+        const cart = cartManager.getCart(id);
 
         if(!cart) return res.status(400).send("Carrito no encontrado");
         

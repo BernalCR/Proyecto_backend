@@ -2,35 +2,7 @@
   {
     "id": 1,
     "title": "Comida para gato",
-    "description": "la mas nutritiva para perros",
-    "code": "asdasd",
-    "price": 19.99,
-    "stock": 50,
-    "category": "comida",
-    "thumbnails": [
-      "https://example.com/images/mascotas.jpg",
-      "https://example.com/images/mascotas.jpg"
-    ],
-    "status": true
-  },
-  {
-    "id": 2,
-    "title": "Comida para perro",
-    "description": "la mas nutritiva para perros",
-    "code": "asdasd",
-    "price": 19.99,
-    "stock": 50,
-    "category": "comida",
-    "thumbnails": [
-      "https://example.com/images/mascotas.jpg",
-      "https://example.com/images/mascotas.jpg"
-    ],
-    "status": true
-  },
-  {
-    "id": 3,
-    "title": "Comida para nutria",
-    "description": "la mas nutritiva para nutria",
+    "description": "la mas nutritiva para gato",
     "code": "asdasd",
     "price": 19.99,
     "stock": 50,

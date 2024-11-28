@@ -23,15 +23,15 @@ export default class ProductsManager{
         await fs.writeFile(productsFilePath, jsonData)
     }
 
-    async getAllProducts(limit){
+    getAllProducts(limit){
         return (limit) ? this.products.slice(0, limit) : this.products;
     }
 
-    async getProductById(id){
+    getProductById(id){
         return this.products.find(product => product.id === id)
     }
 
-    async addProduct(prod){
+    addProduct(prod){
         const newProduct = {
             id: this.products.length ? this.products[this.products.length - 1].id + 1 : 1,
             ...prod,
@@ -45,7 +45,7 @@ export default class ProductsManager{
         return newProduct;
     }
 
-    async updateProduct(id, updatedFields) {
+    updateProduct(id, updatedFields) {
         const productIndex = this.products.findIndex(product => product.id === id);
         if (productIndex === -1) return null;
 
