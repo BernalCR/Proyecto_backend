@@ -2,14 +2,15 @@ import express from "express";
 import handlebars from "express-handlebars"
 import { Server } from "socket.io";
 import __dirname from "./utils.js";
-import productsRouter from "./routes/products.router.js"
-import cartsRouter from "./routes/carts.router.js"
+import productsRouter from "./routes/products.router.js";
+import cartsRouter from "./routes/carts.router.js";
+import viewRoutes from "./routes/view.routes.js";
 
 // Creo una instancia de nuestro servidor con Express
 const app = express();
 
 // Indicamos cual es el directorio public
-app.use(express.static(__dirname + "/public"));
+// app.use(express.static(__dirname + "/public"));
 
 // Inicializamos el  motor que vamos a utilizar (en este caso handlebars)
 app.engine("handlebars", handlebars.engine())
@@ -31,7 +32,7 @@ app.get("/ping", (req, res) =>{
 
 app.use("/api/products", productsRouter)
 app.use("/api/cart", cartsRouter)
-
+app.use("/api/ecomm", viewRoutes)
 
 // Iniciando socket.io
 const httpServer = app.listen(PORT, ()=>{
@@ -42,5 +43,5 @@ const socketServer = new Server(httpServer)
 
 // creamos el canal de comunicacion
 socketServer.on('connection', socket=>{
-    
+
 })
