@@ -1,3 +1,10 @@
-<h2>pezpezpezpez</h2>
+{{#each product}}
+<div>
+    <img src="{{this.img}}" alt="{{this.name}}">
+    <p> Nombre: {{this.name}}</p>
+    <p> Precio: {{this.price}}</p>
+</div>
+{{/each}}
+
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/messages.js"></script>
+{{!-- <script src="/js/home.js"></script> --}}
