@@ -1,14 +1,19 @@
+<div id="realTime_container">
+    <h1>Crea un producto</h1>
+    <form id="registerForm">
+        <label>title: <input type="text" name="title"></label>
+        <label>description: <input type="text" name="description"></label>
+        <label>code: <input type="text" name="code"></label>
+        <label>price: <input type="number" name="price"></label>
+        <label>stock: <input type="number" name="stock"></label>
+        <label>category: <input type="text" name="category"></label>
+        <input type="submit">
+    </form>
 
-<h1>Crea un producto</h1>
-<form id="registerForm">
-    <label for="p_name">Nombre</label>
-    <input type="text" id="p_name" name="p_name">
-    <br/>
-    <label for="p_price">Apellido</label>
-    <input type="number" id="p_price" name="p_price">
-    <input type="submit">
-</form>
-
+    <div id="prodContainer"></div>
+</div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/realTimeProducts.js"></script>
+
+

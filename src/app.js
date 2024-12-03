@@ -10,7 +10,7 @@ import viewRoutes from "./routes/view.routes.js";
 const app = express();
 
 // Indicamos cual es el directorio public
-// app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public"));
 
 // Inicializamos el  motor que vamos a utilizar (en este caso handlebars)
 app.engine("handlebars", handlebars.engine())
@@ -32,7 +32,7 @@ app.get("/ping", (req, res) =>{
 
 app.use("/api/products", productsRouter)
 app.use("/api/cart", cartsRouter)
-app.use("/api/ecomm", viewRoutes)
+app.use("/products", viewRoutes)
 
 // Iniciando socket.io
 const httpServer = app.listen(PORT, ()=>{
@@ -43,5 +43,9 @@ const socketServer = new Server(httpServer)
 
 // creamos el canal de comunicacion
 socketServer.on('connection', socket=>{
-
+    socket.on("addProd", data => {
+        console.log("data")
+        console.log(data)
+        socketServer.emit('addingProd', data)
+    })
 })

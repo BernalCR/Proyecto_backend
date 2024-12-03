@@ -26,6 +26,7 @@ router.get("/", (req, res) =>{
     try {
         const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
         const products = productsManager.getAllProducts(limit);
+        console.log(products)
         res.json(products);
     } catch (error) {
         console.error(error);
@@ -48,6 +49,7 @@ router.get("/:pid", (req, res) =>{
 
 // Crear
 router.post("/", (req, res) =>{
+    console.log("paso")
     try {
         const {title, description, code, price, stock, category, thumbnails} = req.body;
         if(!title || !description || !code || !price || !stock || !category) return res.status(400).send("Todos los campos son obligatorios menos el thumbnails");

@@ -1,9 +1,16 @@
-{{#each product}}
+<h1>Todos los productos</h1>
+
+{{#each productsArray}}
 <div>
-    <img src="{{this.img}}" alt="{{this.name}}">
-    <p> Nombre: {{this.name}}</p>
-    <p> Precio: {{this.price}}</p>
+    <p> title: {{this.title}}</p>
+    <p> description: {{this.description}}</p>
+    <p> code: {{this.code}}</p>
+    <p> price: {{this.price}}</p>
+    <p> stock: {{this.stock}}</p>
+    <p> category: {{this.category}}</p>
 </div>
+<br/>
+<br/>
 {{/each}}
 
 <script src="/socket.io/socket.io.js"></script>
