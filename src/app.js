@@ -44,8 +44,6 @@ const socketServer = new Server(httpServer)
 // creamos el canal de comunicacion
 socketServer.on('connection', socket=>{
     socket.on("addProd", data => {
-        console.log("data")
-        console.log(data)
         socketServer.emit('addingProd', data)
     })
 })
